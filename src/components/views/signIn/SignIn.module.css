@@ -1,0 +1,40 @@
+.prueba{
+    color: brown;
+}
+
+form{
+    background: blue/*rgba(255, 255, 255, 0.3)*/;
+    padding: 40px 10px;
+    border-radius: 10px;
+    font-family: 'Roboto', sans-serif, bold;
+    box-shadow: 5px 5px 15px 0 rgba(255, 255, 255, 0.2);
+    width: 400px
+  }
+  
+  .form{
+    width: 100%;
+    margin: auto;
+  }
+
+  button{
+    display: block;
+    margin: 10px auto;
+    /*background: -webkit-linear-gradient(to right, #26D0CE, #1A2980);  /* Chrome 10-25, Safari 5.1-6 */
+    /* background: linear-gradient(to right, #26D0CE, #1A2980); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: none;
+    width: 75%;
+    padding: 10px;
+    border-radius: 2px;
+    color: var(--colorText);
+    font-family: 'Big Shoulders Stencil Display', bold;
+    font-size: 20px;
+    border: 2px solid rgba(255, 255, 255, 1);
+    transition: 0.3s ease all;
+  }
+  
+  button:hover, button:focus{
+    border:none;
+    border: 2px solid rgb(32,122,166);
+    color: rgb(32,122,166);
+    cursor: pointer;
+  }
