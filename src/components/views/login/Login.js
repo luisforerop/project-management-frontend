@@ -17,7 +17,7 @@ const fields = [
     }
 ]
 
-const Login = (params) => {
+const Login = props => {
     const history = useHistory();
     const { auth } = useContext(UserContext);
     const [ errorValidation, setErrorValidation ] = useState(false);

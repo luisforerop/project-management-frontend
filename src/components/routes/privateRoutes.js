@@ -5,6 +5,8 @@ import { UserContext } from "../stateManagement/UserContext";
 const PrivateRoutes = (props) => {
     const { validate } = useContext(UserContext);
     const {exact, path, component:Component} = props
+    // console.log('Este es props private routes');
+    // console.log(props);
     return (
         <Route 
             exact={exact}
