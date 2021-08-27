@@ -1,6 +1,11 @@
-import { faChevronLeft, faChevronRight, faPencilAlt, faPlus, faSearch, faTrashAlt, faCommentDots } from '@fortawesome/free-solid-svg-icons'
+import { faChevronLeft, faChevronRight, faPencilAlt, faPlus, faSearch, faTrashAlt, faCommentDots, faSave } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useEffect, useState } from 'react'
 //import { useState } from 'react'
+
+export { default as TextArea} from './TextArea'
+export { default as CardTest } from './Card'
+
 
 export const Tag = ({children, color='green'}) =>{
     const style = {
@@ -118,6 +123,7 @@ export const IconButton = ({ type='update', action, customStyle, size }) => {
         create: faPlus,
         next: faChevronRight,
         back: faChevronLeft,
+        save: faSave,
     }
 
     const handlerAction = event => {
@@ -167,26 +173,23 @@ export const EditableListItem =  ({children}) => {
         textAlign: children ? null : 'center',
         padding: '5px 5px'
     }
+    /*
     const buttonsStyle = {
         display: 'inline-block',
         float: 'right'
     }
+    */
     return(
         <div style={style}>
             {children ? 
-                <>
+                <div>
                     {children} 
-                    <div style={buttonsStyle}>
-                    <IconButton
-                        size={20}
-                    />
                     <IconButton
                         size={20}
                         type='delete'
                         customStyle={{margin: '0 5px'}}
                     />
-                    </div>
-                </>
+                </div>
                 : 
                 <span style={{cursor: 'pointer'}}>
                     Nuevo criterio de aceptación
@@ -197,6 +200,15 @@ export const EditableListItem =  ({children}) => {
 }
 
 export const CardNumber = ({number, title}) => {
+    const [ itemValue, setItemValue ] = useState('##')
+    useEffect(()=>{
+        setItemValue(number)
+    }, [number])
+
+    const handler = event => {
+        setItemValue(event.target.value)
+    }
+
     const styleNumber = {
         height: '100px',
         width: '100px',
@@ -210,9 +222,12 @@ export const CardNumber = ({number, title}) => {
     }
     return(
         <div style={principalStyle}>
-            <div style={styleNumber}>
-                {number}
-            </div>
+            <input
+                type='number' 
+                style={styleNumber} 
+                value={itemValue}
+                onChange={handler}
+            />
             <h3>{title}</h3>
         </div>
     )
@@ -248,6 +263,32 @@ export const InputData = ({description, height=1}) => {
                 
             </textarea>
         </div>
+    )
+}
+
+export const ButtonText = ({text, handler, customStyle}) => {
+    const style = {
+        backgroundColor: 'blue',
+        border: 'none',
+        borderRadius: '5px',
+        fontSize: 18,
+        padding: '3px 6px',
+        color: 'white',
+    }
+
+    const styleButton = customStyle ? customStyle : {
+        ...style, ...customStyle
+    }
+    if(!handler){
+        handler = () => console.log('No se que hacer');
+    }
+    return  (
+        <button
+            onClick={handler}
+            style={styleButton}
+        >
+            {text}
+        </button>
     )
 }
 

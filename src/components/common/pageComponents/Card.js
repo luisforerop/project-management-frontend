@@ -1,4 +1,4 @@
-const Card = ({ children, href }) => {
+const CardTest = ({ children, href }) => {
     const style = {
         height: 'auto',
         width: 200,
@@ -28,4 +28,4 @@ const Card = ({ children, href }) => {
     )
 }
 
-export default Card;
+export default CardTest;

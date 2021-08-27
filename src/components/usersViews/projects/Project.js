@@ -1,7 +1,7 @@
 // import { useEffect } from "react";
-import { Card, Tag, FilterBar, ProfilePicture } from '../../common/pageComponents'
 import { useEffect, useState } from "react";
-
+import InfoProject from './InfoProject';
+import UserStories from './UserStories';
 // const { useHistory, /*Link*/ } = require("react-router-dom");
 
 const projectInformation = {
@@ -18,84 +18,6 @@ const projectInformation = {
     state: 'active'
 }
 
-
-
-const InfoProject = ({ title, description, state, team, owner }) => {
-    const style = {
-        width: '50vw',
-        backgroundColor: 'orange',
-    }
-
-    return (
-        <div style={style}>
-            <h2>{title.toUpperCase()}</h2>
-            <p>{description}</p>
-            <ProfilePicture
-                name={owner}
-                rol={'Owner'}
-            />
-            <br></br>
-            {team.map( (dev, index) => (
-                <ProfilePicture
-                    key={index}
-                    name={dev}
-                />
-            ))}
-            <br></br>
-            <Tag>{state}</Tag>
-            <Tag color="red">
-                Editar
-            </Tag>
-
-        </div>
-    )
-}
-
-const UserStories = ({userStories}) => {
-    const [ userStoriesList, setUsList] = useState([])
-    const [ isFilter, setIsFilter] = useState(false)
-    const [ usToRender, setUsToRender] = useState([])
-    const style = {
-        width: '50vw',
-        backgroundColor: 'blue'
-    }
-    /**const test = (algo) => {
-        console.log('Este es el test', algo);
-    } */
-    useEffect(()=> {
-        setUsList(userStories)
-        setUsToRender(userStories)
-    }, [userStories])
-
-    return(
-        <div style={style}>
-            <h2>HISTORIAS DE USUARIO</h2>
-            <FilterBar
-                listInfo={userStoriesList}
-                setListToRender={setUsToRender}
-                setIsFilter={setIsFilter}
-                placeholder={'Buscar historia de usuario...'}
-            />
-            {usToRender.map((userStory, index) => (
-                <Card key={index}>
-                    {userStory}
-                </Card>
-            ))}
-            { isFilter ? null :
-                <Card>
-                    Nueva historia de usuario
-                </Card>
-            }
-            {/**
-             * <NewItem>
-                <Card>
-                    Hola
-                </Card>
-            </NewItem>
-             */}
-        </div>
-    )
-}
 
 const Project = props => {
     const [ projectInfo, setProjectInfo ] = useState({})

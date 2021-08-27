@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
-import { FilterBar, ProfilePicture } from "../../common/pageComponents"
+import { ButtonText, FilterBar, ProfilePicture, Tag, CardTest, } from "../../common/pageComponents"
+import { findInfo } from "../../tools"
 
 const owner = {id: 'devOne', name: 'Andres'}
 
@@ -76,19 +77,6 @@ const Team = () => {
         return listaLarga.filter( item => !listaCorta.includes(item))
     }
 
-    const findInfo = (toFindInfo, listWithInfo) => {
-        if(typeof toFindInfo === 'object') {
-            let info = []
-            toFindInfo.forEach(id => {
-                info.push(listWithInfo.find(dev => dev.id === id))
-            })
-            return info
-        }
-        else if(typeof toFindInfo === 'string'){
-            return listWithInfo.find(dev => dev.id === toFindInfo)
-        }
-    }
-
     useEffect(()=>{
         
         setProjectTeam(teamProject)
@@ -102,11 +90,14 @@ const Team = () => {
 
     return(
         <div>
+            <h2>EQUIPO</h2>
             <div>
-                    <ProfilePicture
-                        name={owner.name}
-                        rol={'owner'}
-            />
+                <ProfilePicture>
+                    {owner.name}<br></br>
+                    <Tag color='orange'>
+                        Owner
+                    </Tag>
+                </ProfilePicture>
                 {projectTeam.map((id) => {
                     const dev = findInfo(id, infoDevs)
                     return(
@@ -137,6 +128,10 @@ const Team = () => {
                         />
                 )})}
             </div>
+            <ButtonText
+                text='Guardar'
+            />
+            <CardTest>Soy</CardTest>
         </div>
     )
 }

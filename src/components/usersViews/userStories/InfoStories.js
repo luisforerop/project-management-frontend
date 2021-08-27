@@ -1,4 +1,4 @@
-import { Card, CardNumber, EditableListItem, IconButton, ProfilePicture } from "../../common/pageComponents"
+import { Card, CardNumber, EditableListItem, IconButton, ProfilePicture, TextArea } from "../../common/pageComponents"
 
 export const AcceptCondition = ({list}) => {
     const style = {
@@ -25,6 +25,26 @@ export const AcceptCondition = ({list}) => {
     )
 }
 
+const DescriptionArea = ({as, wantTo, asThat}) => {
+    const areasToRender = {
+        'Como': as,
+        'Quiero': wantTo,
+        'Para': asThat
+    }
+    const titleAreas = Object.keys(areasToRender);
+    return(
+        <div>
+            {titleAreas.map(area => (
+                <TextArea
+                    key={area}
+                    title={area}
+                    content={areasToRender[area]}
+                />
+            ))}
+        </div>
+    )
+}
+
 
 const InfoStories = ({titleProject, description, acceptCondition, cost, priority}) => {
     const style = {
@@ -35,7 +55,6 @@ const InfoStories = ({titleProject, description, acceptCondition, cost, priority
     }
 
     const { as, wantTo, asThat } = description ? description : { undefined }
-
     return (
     <div style={style}>
         <h2>Historia de usuario</h2>
@@ -55,8 +74,13 @@ const InfoStories = ({titleProject, description, acceptCondition, cost, priority
                 }}
             />
         </div>
-        <h3>{titleProject}</h3>
-        <p>Como {as} quiero {wantTo} para {asThat}</p>
+        <TextArea
+            content={titleProject}
+            isTitle={true}
+        />
+        <DescriptionArea
+            as={as} wantTo={wantTo} asThat={asThat}
+        />
         <AcceptCondition
             list={acceptCondition}
         />
