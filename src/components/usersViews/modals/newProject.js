@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Card, EditableListItem, IconButton, InputData, ProfilePicture } from "../../common/pageComponents";
+import { Card, EditableListItem, IconButton, ProfilePicture, TextArea } from "../../common/pageComponents";
 
 const NewProject = ({user='pepe'}) => {
 const [ userStories, /*setUserStories*/ ] = useState(['hola', 'hola 2'])
@@ -13,7 +13,7 @@ const [ userStories, /*setUserStories*/ ] = useState(['hola', 'hola 2'])
     return (
         <div>
             {listInputs.map( item => (
-                <InputData
+                <TextArea
                     description={inputs[item]}
                     key={item}
                     height={2}

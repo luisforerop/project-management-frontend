@@ -2,6 +2,7 @@ import { useState } from "react";
 import Dashboard from "./dashboard/Dashboard";
 import NewProject from "./modals/newProject";
 import Team from "./modals/team";
+import Ticket from "./modals/tickets";
 import Project from "./projects/Project";
 import UserStories from "./userStories/UserStories";
 
@@ -13,7 +14,8 @@ const ViewTest = props => {
         project: <Project/>,
         us: <UserStories/>,
         newProject: <NewProject/>,
-        team: <Team/>
+        team: <Team/>,
+        tickets: <Ticket/>
     }
     const itemToRender = Object.keys(render);
     return (

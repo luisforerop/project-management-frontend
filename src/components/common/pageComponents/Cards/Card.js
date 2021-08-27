@@ -1,4 +1,4 @@
-const CardTest = ({ children, href }) => {
+export const Card = ({ children, href='#', customStyle }) => {
     const style = {
         height: 'auto',
         width: 200,
@@ -19,13 +19,14 @@ const CardTest = ({ children, href }) => {
         color: 'black'
     }
 
+    const aStyle = !customStyle ? style : {...style, customStyle}
+
     return(
         <a
-            style={style} href={href ? href : '/#'}
+            style={aStyle} href={href}
         >
             {children}
         </a>
     )
 }
-
-export default CardTest;
+export default Card;

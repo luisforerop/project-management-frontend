@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from './TextArea.module.css'
 
-const TextArea = ({content, title, isTitle}) => {
+const TextArea = ({content, title, isTitle, customStyle}) => {
     const [ textAreaContent, setContent ] = useState('');
 
     useEffect(()=>{
@@ -14,7 +14,7 @@ const TextArea = ({content, title, isTitle}) => {
     }
 
     return(
-            <div>
+            <div style={customStyle}>
                 {!title ? null : 
                     <h3 className={styles['title']}>
                         {title}

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { ButtonText, FilterBar, ProfilePicture, Tag, CardTest, } from "../../common/pageComponents"
+import { ButtonText, FilterBar, ProfilePicture, Tag, } from "../../common/pageComponents"
 import { findInfo } from "../../tools"
 
 const owner = {id: 'devOne', name: 'Andres'}
@@ -131,7 +131,6 @@ const Team = () => {
             <ButtonText
                 text='Guardar'
             />
-            <CardTest>Soy</CardTest>
         </div>
     )
 }

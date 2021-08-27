@@ -36,7 +36,7 @@ const TicketsView = ({tickets}) => {
         position: 'relative',
     }
 
-    const lists = ['Activo', 'En proceso', 'Finalizado', 'Cancelado']
+    const lists = ['Activo', 'En proceso', 'Finalizado', 'Stand-by', 'Cancelado']
 
     return(
     <div style={style}>
