@@ -1,3 +1,1 @@
-export const useDeleteItemList = () => {
-    return []
-}
+export { default as useFetch } from './useFetch'

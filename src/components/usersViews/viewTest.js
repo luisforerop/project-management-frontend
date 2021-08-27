@@ -1,10 +1,37 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useFetch } from "../hooks";
 import Dashboard from "./dashboard/Dashboard";
 import NewProject from "./modals/newProject";
 import Team from "./modals/team";
 import Ticket from "./modals/tickets";
 import Project from "./projects/Project";
 import UserStories from "./userStories/UserStories";
+
+
+const Test = () => {
+    const url = 'http://localhost:5001/'
+    const config = {
+        url: url + 'auth',
+        method: 'POST',
+        body: {
+            username: 'pepe',
+            password: '1234lf'
+        }
+    }
+    const [ hello, isChargingHello ] = useFetch({url});
+    const [ data, isCharging ] = useFetch(config)
+
+    useEffect(()=>{
+        console.log(data);
+    }, [ data ])
+
+    return(
+        <div>
+            {isChargingHello ? 'Cargando...' : hello.response}
+            {isCharging ? 'Cargando...' : data.error ? 'Error de auth' : 'Todo bien'}
+        </div>
+    )
+}
 
 
 const ViewTest = props => {
@@ -15,7 +42,8 @@ const ViewTest = props => {
         us: <UserStories/>,
         newProject: <NewProject/>,
         team: <Team/>,
-        tickets: <Ticket/>
+        tickets: <Ticket/>,
+        httpTest: <Test/>
     }
     const itemToRender = Object.keys(render);
     return (

@@ -1,5 +1,6 @@
-import {createContext, useState} from "react"
+import { createContext, useState } from "react"
 import { Auth } from '../httpController/authSystem/authHttp'
+
 
 export const UserContext = createContext();
 
@@ -28,6 +29,8 @@ export const UserProvider = ({children}) => {
         auth,
         context,
         setContext,
+        setIsLogin, 
+        setUserInfo
 
     }
 
