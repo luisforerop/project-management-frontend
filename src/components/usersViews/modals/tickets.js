@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Tag, TextArea } from "../../common/pageComponents";
+import { NextBackButtons } from "../../common/pageComponents/Buttons";
 
 const Ticket = () => {
     const [ ticketState, setTicketState ] = useState(0)
@@ -21,6 +22,13 @@ const Ticket = () => {
     } 
     return(
         <div>
+            <NextBackButtons
+            
+            >
+                <h2 style={{display:'inline-block'}}>
+                    TICKETS
+                </h2>
+            </NextBackButtons>
             <TextArea
                 isTitle={true}
                 content='El título'

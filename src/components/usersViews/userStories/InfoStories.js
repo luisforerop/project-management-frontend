@@ -1,4 +1,5 @@
 import { Card, CardNumber, EditableListItem, IconButton, ProfilePicture, TextArea } from "../../common/pageComponents"
+import { NextBackButtons } from "../../common/pageComponents/Buttons"
 
 export const AcceptCondition = ({list}) => {
     const style = {
@@ -57,30 +58,17 @@ const InfoStories = ({titleProject, description, acceptCondition, cost, priority
     const { as, wantTo, asThat } = description ? description : { undefined }
     return (
     <div style={style}>
-        <h2>Historia de usuario</h2>
-        <div>
-            <IconButton
-                type='back'
-                size={25}
-                customStyle={{
-                    fontSize:15
-                }}
-            />
-            <IconButton
-                type='next'
-                size={25}
-                customStyle={{
-                    fontSize:15
-                }}
-            />
-        </div>
-        <TextArea
-            content={titleProject}
-            isTitle={true}
-        />
+        <NextBackButtons
+
+        >
+            <h2 style={{display:'inline-block'}}>
+                Historia de usuario
+            </h2>
+        </NextBackButtons>
+        <h3>{titleProject}</h3>
         <DescriptionArea
             as={as} wantTo={wantTo} asThat={asThat}
-        />
+            />
         <AcceptCondition
             list={acceptCondition}
         />
