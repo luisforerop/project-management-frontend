@@ -2,8 +2,13 @@ import { Link } from "react-router-dom";
 // import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import Project from "../usersViews/projects/Project";
 import Dashboard from "../usersViews/dashboard/Dashboard";
+
 import Home from "../views/home/Home";
 import ViewTest from "../usersViews/viewTest";
+import UserStories from "../usersViews/userStories";
+import Ticket from "../usersViews/tickets";
+
+
 
 const a = (props) => {
   console.log(props);
@@ -28,15 +33,18 @@ const Test = props => {
   )
 }
 
+const isPublicFalse = true
 
 export const views = {
     '/': {view: Home, name: 'Home', isPublic: true},
-    '/dashboard': {view: Dashboard, name: 'Dashboard', isPublic: false},
+    '/dashboard': {view: Dashboard, name: 'Dashboard', isPublic: isPublicFalse},
     '/a': {view: a, name: 'A', isPublic: true},
     '/test': {view: ViewTest, name: 'Test', isPublic: true},
     '/b': {view: b, name: 'B', isPublic: true},
     '/blog': {view: blog, name: 'blog', isPublic: true},
-    '/dashboard/project/:id': {view: Project, name: 'Project', isPublic: false},
-    '/dashboard/userStories/:id': {view: Test, name: 'userStories', isPublic: false},
-    '/dashboard/ticket/:id': {view: Test, name: 'ticket', isPublic: false},
+    '/dashboard/project/:name': {view: Project, name: 'Project', isPublic: isPublicFalse},
+    '/dashboard/userStories': {view: UserStories, name: 'userStories', isPublic: isPublicFalse},
+    '/dashboard/ticket': {view: Ticket, name: 'ticket', isPublic: isPublicFalse},
+    '/dashboard/userStories/new': {view: UserStories, name: 'userStories', isPublic: isPublicFalse},
+    '/dashboard/userStories/:ticketId': {view: Ticket, name: 'ticket', isPublic: isPublicFalse},
 }

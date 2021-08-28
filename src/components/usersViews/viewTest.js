@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useFetch } from "../hooks";
 import Dashboard from "./dashboard/Dashboard";
-import NewProject from "./modals/newProject";
-import Team from "./modals/team";
-import Ticket from "./modals/tickets";
-import Project from "./projects/Project";
-import UserStories from "./userStories/UserStories";
+import NewProject from "./team/newProject";
+import Team from "./team";
+import Ticket from "./tickets";
+import Project from "./projects";
+import UserStories from "./userStories";
 
 
 const Test = () => {
