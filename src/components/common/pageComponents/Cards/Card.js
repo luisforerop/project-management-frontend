@@ -1,4 +1,5 @@
-export const Card = ({ children, href='#', customStyle }) => {
+export const Card = ({ children, href='#', customStyle, action }) => {
+    const handler = action ? action : () => console.log('No se que hacer'); 
     const style = {
         height: 'auto',
         width: 200,
@@ -23,7 +24,7 @@ export const Card = ({ children, href='#', customStyle }) => {
 
     return(
         <a
-            style={aStyle} href={href}
+            style={aStyle} href={href} onClick = {handler}
         >
             {children}
         </a>

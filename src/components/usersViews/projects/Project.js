@@ -1,35 +1,26 @@
-// import { useEffect } from "react";
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router";
 import InfoProject from './InfoProject';
 import UserStories from './UserStories';
-// const { useHistory, /*Link*/ } = require("react-router-dom");
-
-const projectInformation = {
-    id: 'projectOne',
-    title: 'proyecto uno',
-    description: 'Ecommerce de cocacola',
-    owner: 'userTwo',
-    company: 'cocacola',
-    userStories: [
-        'company1project1us1', 
-        'company1project1us2'
-    ],
-    team: ['userTwo', 'userThree', 'userFour'],
-    state: 'active'
-}
-
 
 const Project = props => {
     const [ projectInfo, setProjectInfo ] = useState({})
     const [ userStoriesList, setUserStoriesList ] = useState([])
+    const [ teamInfo, setTeamInfo ] = useState([])
+    const [ owner, setOwner ] = useState({})
+    // ====== PUEDO ENVIAR INFO POR EL STATE DE HISTORY, PERO SI NO EXISTE, DEBO HACER LA PETICIÓN
+    const history = useHistory()
+    const { state } = history.location
     /* MODIFICAR LA FUNCIÓN PARA ACCEDER A LA INFO */
     useEffect(()=> {
-        setTimeout(()=>{
-            setProjectInfo(projectInformation);
-            
-        }, 500)
+        console.log(state); // PODEMOS USAR STATE PARA PASAR ESTADOS
+        if(state){
+            setProjectInfo(state.infoProject ? state.infoProject : {})
+            setTeamInfo(state.infoTeam ? state.infoTeam : [])
+            setOwner(state.ownerInfo ? state.ownerInfo : {})
+        }
         // console.log(projectInfo);
-    }, [projectInfo])
+    }, [state])
 
     useEffect(()=> {
         const { userStories } = projectInfo
@@ -61,11 +52,11 @@ const Project = props => {
             style={style}
         >
             <InfoProject 
-                team={projectInfo.team ? projectInfo.team : []}
-                title={projectInfo.title ? projectInfo.title : 'Nombre del proyecto'}
-                description={projectInfo.description ? projectInfo.description : 'Descripción'}
-                state={projectInfo.state ? projectInfo.state : 'Estado del proyecto'}
-                owner={projectInfo.owner}
+                team={teamInfo}
+                title={projectInfo?.title ? projectInfo.title : 'Nombre del proyecto'}
+                description={projectInfo?.description ? projectInfo.description : 'Descripción'}
+                state={projectInfo?.state ? projectInfo.state : 'Estado del proyecto'}
+                owner={owner}
             />
             <UserStories
                 userStories = {userStoriesList}

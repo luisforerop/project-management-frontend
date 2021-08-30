@@ -7,7 +7,7 @@ import Home from "../views/home/Home";
 import ViewTest from "../usersViews/viewTest";
 import UserStories from "../usersViews/userStories";
 import Ticket from "../usersViews/tickets";
-
+import Team from "../usersViews/team/Team";
 
 
 const a = (props) => {
@@ -43,8 +43,10 @@ export const views = {
     '/b': {view: b, name: 'B', isPublic: true},
     '/blog': {view: blog, name: 'blog', isPublic: true},
     '/dashboard/project/:name': {view: Project, name: 'Project', isPublic: isPublicFalse},
+    '/dashboard/newProject/': {view: Project, name: 'Project', isPublic: isPublicFalse},
     '/dashboard/userStories': {view: UserStories, name: 'userStories', isPublic: isPublicFalse},
     '/dashboard/ticket': {view: Ticket, name: 'ticket', isPublic: isPublicFalse},
-    '/dashboard/userStories/new': {view: UserStories, name: 'userStories', isPublic: isPublicFalse},
+    '/dashboard/newUserStories': {view: UserStories, name: 'userStories', isPublic: isPublicFalse},
     '/dashboard/userStories/:ticketId': {view: Ticket, name: 'ticket', isPublic: isPublicFalse},
+    '/dashboard/team': {view: Team, name: 'team', isPublic: isPublicFalse},
 }

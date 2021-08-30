@@ -31,13 +31,18 @@ const Project = ({ view, infoProject, index}) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [ url, owner ])
 
-    const handlerView = () => {
+    const handlerView = event => {
+        event.preventDefault()
         view(index)
-        history.push(`/dashboard/project/${id}`, infoProject)
+        history.push(`/dashboard/project/${title}`, {
+            infoProject,
+            infoTeam,
+            ownerInfo
+        })
     }
     return(
-        <div
-            onClick={handlerView}
+        <Card
+            action={handlerView}
         >
             <h2>{title}</h2>
             <p>{description}</p>
@@ -47,7 +52,7 @@ const Project = ({ view, infoProject, index}) => {
                 return(
                 <Tag key={infoDev.id} >{infoDev.name}</Tag>
             )})}
-        </div>
+        </Card>
     )
 }
 
@@ -73,14 +78,12 @@ const Projects = ({infoProjects}) => {
             {!projects ? null : projects.map( (project, index) => {
                 const { id } = project
                 return (
-                    <Card key={`pc${id}`}>
-                        <Project
-                            key={id}
-                            index={index}
-                            view={view}
-                            infoProject={project}
-                        />
-                    </Card>                    
+                    <Project
+                        key={id}
+                        index={index}
+                        view={view}
+                        infoProject={project}
+                    />
             )})}
         </>
     )

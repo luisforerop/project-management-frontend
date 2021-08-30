@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { useHistory } from "react-router"
 import { ButtonText, FilterBar, ProfilePicture, Tag, } from "../../common/pageComponents"
 import { findInfo } from "../../tools"
 
@@ -54,14 +55,14 @@ const DevTeam = ({infoDev, setTeam, projectTeam}) => {
         console.log('hola soy ', infoDev.name)
         setTeam([...projectTeam, infoDev.id])
     }
+
     return(
         <div 
             style={{cursor: 'pointer', display: 'inline-block', margin: '0 5px', backgroundColor:'orange'}}
             onClick={handlerTeam}
         >
             <ProfilePicture
-                name={infoDev.name}
-                
+                name={infoDev.name}                
             />
         </div>
     )
@@ -72,13 +73,15 @@ const Team = () => {
     const [ availableTeam, setAvailableTeam ] = useState([])
     const [ projectTeam, setProjectTeam ] = useState([])
     const [ teamToRender, setTeamToRender ] = useState([])
+    const [ owner, setOwner ] = useState({})
+    const history = useHistory();
+    console.log(history.location.state);
 
     const avaibleTeamFilter = (listaLarga, listaCorta) => {
         return listaLarga.filter( item => !listaCorta.includes(item))
     }
 
-    useEffect(()=>{
-        
+    useEffect(()=>{        
         setProjectTeam(teamProject)
     }, [])
 
