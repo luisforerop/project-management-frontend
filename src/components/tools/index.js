@@ -11,13 +11,16 @@ export const findInfo = (toFindInfo, listWithInfo) => {
     }
 }
 
-export const handlerFetch = async ({ url, method='GET', body, setData, setIsFetching }) => {
+export const handlerFetch = async ({ url, method='GET', info/*, setData, setIsFetching*/ }) => {
+    const body = info && JSON.stringify(info)
+    console.log('Handler fetch');
+    console.log(body);
     const config = method === 'GET' ? null: {
         method,
         headers: {
             'Content-Type': 'application/json'            
         },
-        body: body && JSON.stringify(body)
+        body 
     }
     // setIsFetching && setIsFetching(true)
     try {

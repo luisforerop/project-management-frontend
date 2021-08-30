@@ -4,6 +4,7 @@ import Form from "../../common/forms/Form"
 import { UserContext } from "../../stateManagement/UserContext"
 import styles from './Login.module.css'
 import { handlerFetch } from "../../tools"
+import useFetch from "../../hooks/useFetch"
 
 const fields = [
     {
@@ -20,22 +21,33 @@ const fields = [
 
 const Login = props => {
     const history = useHistory();
-    const { setUserInfo, setIsLogin } = useContext(UserContext);
+    const { setLoginInfo, url } = useContext(UserContext);
     const [ errorValidation, setErrorValidation ] = useState(false);
+    const [ data, isFetching, error, setConfig ] = useFetch();
+    
+    console.log([ data, isFetching, error, setConfig ]);
 
     const handlerInfo = async (info, event) =>{
         event.preventDefault()
         const config = {
-            url: 'http://localhost:5001/auth',
+            url: url + 'auth',
             method: 'POST',
-            body: info            
-        }
+            info            
+        }   
         const response = await handlerFetch(config)
         if(response.error) setErrorValidation(true)
         else {
+            //const { infoUser, token } = response;
             setErrorValidation(false);
-            setUserInfo(response.info)
-            setIsLogin(true)
+            const loginInfo = {
+                /*infoUser,
+                // infoCompany,
+                // listCoworkers: companyUsers,
+                token,*/
+                ...response,
+                validate: true
+            }
+            setLoginInfo(loginInfo)
             history.push('/dashboard')
         }
     }

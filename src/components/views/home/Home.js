@@ -11,9 +11,9 @@ const Toogle = ({userExist, toogle}) => {
     <>
     <p style={style}>
         {userExist ? '¿No tienes cuenta? ' : '¿Tienes cuenta? '}
-      <p onClick={toogle} style={{...style, cursor: 'pointer'}}>
+      <span onClick={toogle} style={{...style, cursor: 'pointer'}}>
         {userExist  ? 'Regístrate': 'Inicia sesión'}
-      </p>
+      </span>
       </p>
     </>
 )}

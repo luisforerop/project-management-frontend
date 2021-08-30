@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 // import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import Project from "../usersViews/projects/Project";
 import Dashboard from "../usersViews/dashboard/Dashboard";
@@ -23,7 +23,7 @@ const b = () => (
 const blog = () => (
 <h1>Esto es un blog con muchas entradas</h1>
 )
-
+/*
 const Test = props => {
   return (
     <div>
@@ -31,7 +31,7 @@ const Test = props => {
       
     </div>
   )
-}
+}*/
 
 const isPublicFalse = true
 
