@@ -1,54 +1,8 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useHistory } from "react-router"
 import { ButtonText, FilterBar, ProfilePicture, Tag, } from "../../common/pageComponents"
-import { findInfo } from "../../tools"
-
-const owner = {id: 'devOne', name: 'Andres'}
-
-const teamProject = ['devTwo', ]
-
-const devs = ['devOne', 'devTwo', 'devThree', 'devFour', 'devFive', 'devSix', 'devSeven']
-
-const infoDevs = [
-    {
-        id: 'devOne',
-        name: 'Andres',
-        rol: 'dev'
-    }, 
-    {
-        id: 'devTwo',
-        name: 'Aleja',
-        rol: 'dev'
-    },
-    {
-        id: 'devThree',
-        name: 'Pedro',
-        rol: 'dev'
-    }, 
-    {
-        id: 'devFour',
-        name: 'Sofi',
-        rol: 'dev'
-    }, 
-    {
-        id: 'devFive',
-        name: 'María',
-        rol: 'dev'
-    },
-    {
-        id: 'devSix',
-        name: 'Julian',
-        rol: 'dev'
-    }, 
-    {
-        id: 'devSeven',
-        name: 'Lina',
-        rol: 'dev'
-    },
-]
-
-
-
+import { useFetch } from "../../hooks"
+import { UserContext } from "../../stateManagement/UserContext"
 
 const DevTeam = ({infoDev, setTeam, projectTeam}) => {
     const handlerTeam = () => {
@@ -74,22 +28,43 @@ const Team = () => {
     const [ projectTeam, setProjectTeam ] = useState([])
     const [ teamToRender, setTeamToRender ] = useState([])
     const [ owner, setOwner ] = useState({})
+    const { url } = useContext(UserContext)
+    const [ devsCompany, , , setFetchDevs ] = useFetch([])
+
     const history = useHistory();
-    console.log(history.location.state);
+    const { state } = history.location
+    console.log(state);
 
-    const avaibleTeamFilter = (listaLarga, listaCorta) => {
-        return listaLarga.filter( item => !listaCorta.includes(item))
-    }
+    // Seteamos la información del equipo y del propietario
+    useEffect(()=>{    
+        if(state){
+            setProjectTeam(state.team ? state.team : []) // Esto debe hacerse por consulta
+            setOwner(state.owner ? state.owner : {})
+        }
+    }, [state])
 
-    useEffect(()=>{        
-        setProjectTeam(teamProject)
-    }, [])
+    // Consultamos los devs que hay en la compañía
+    useEffect(()=>{
+        setFetchDevs({
+            url: url + 'devsInACompany',
+            method: 'POST',
+            info: { companyId: 'companyOne'}
+        })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [url])
+
+    useEffect(()=>{
+        console.log('Estos son los devs de la compañia');
+        console.log(devsCompany);
+    }, [devsCompany])
+
+    // SETAMOS LOS DEVS DISPONIBLES
 
     useEffect(()=> {
-        const listAviableTeam = avaibleTeamFilter(devs, [...projectTeam, owner.id])
-        setAvailableTeam(findInfo(listAviableTeam, infoDevs))
-        setTeamToRender(findInfo(listAviableTeam, infoDevs))
-    }, [projectTeam])
+        const listAviableTeam = devsCompany.filter(dev => ( projectTeam.every( devTeam => dev.id !== devTeam.id) ))
+        setAvailableTeam(listAviableTeam)
+        setTeamToRender(listAviableTeam)
+    }, [projectTeam, devsCompany])
 
     return(
         <div>
@@ -101,12 +76,13 @@ const Team = () => {
                         Owner
                     </Tag>
                 </ProfilePicture>
-                {projectTeam.map((id) => {
-                    const dev = findInfo(id, infoDevs)
+                <br></br>
+                {projectTeam.map((dev) => {
                     return(
                         <ProfilePicture
-                            key={id}
+                            key={dev.id}
                             name={dev.name}
+                            imgSrc={dev.urlProfile}
                             rol='dev'
                         />
                 )})}

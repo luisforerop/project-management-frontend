@@ -7,7 +7,7 @@ import { UserContext } from "../../stateManagement/UserContext";
 const Project = ({ view, infoProject, index}) => {
     const history = useHistory();
     const { url } = useContext(UserContext)
-    const { id, title, description, team, owner } = infoProject
+    const { /*id,*/ title, description, team, owner } = infoProject
     const [ infoTeam, , , fetchTeam ] = useFetch([])
     const [ ownerInfo, , , fetchOwner ] = useFetch({})
 

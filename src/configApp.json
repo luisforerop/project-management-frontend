@@ -1,3 +1,4 @@
 {
-    "principalUrl": "http://localhost:5001/"
+    "localUrl": "http://localhost:5001/",
+    "productionUrl": "https://project-management-backend-lf.herokuapp.com/"
 }

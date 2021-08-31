@@ -10,7 +10,7 @@ const InfoProject = ({ title, description, state, team, owner }) => {
     }
 
     const handlerAdd = event => {
-        history.push('/dashboard/team', {team})
+        history.push('/dashboard/team', {team, owner})
     }
 
     return (

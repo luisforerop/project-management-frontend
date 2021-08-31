@@ -26,6 +26,7 @@ const Dashboard = props => {
     useEffect(()=>{
         // console.log('Este es el valor de pl');
         // console.log(projectList);
+        console.log('Estamos en el entorno', process.env.NODE_ENV);
         if(projectList) setProjectToRender(projectList)
     }, [projectList])
 
