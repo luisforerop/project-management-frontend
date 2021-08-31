@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/project-management-frontend/static/css/main.c01a97de.chunk.css",
+    "main.js": "/project-management-frontend/static/js/main.f587b12d.chunk.js",
+    "main.js.map": "/project-management-frontend/static/js/main.f587b12d.chunk.js.map",
+    "runtime-main.js": "/project-management-frontend/static/js/runtime-main.391e4bb6.js",
+    "runtime-main.js.map": "/project-management-frontend/static/js/runtime-main.391e4bb6.js.map",
+    "static/js/2.0807259c.chunk.js": "/project-management-frontend/static/js/2.0807259c.chunk.js",
+    "static/js/2.0807259c.chunk.js.map": "/project-management-frontend/static/js/2.0807259c.chunk.js.map",
+    "static/js/3.fa55267f.chunk.js": "/project-management-frontend/static/js/3.fa55267f.chunk.js",
+    "static/js/3.fa55267f.chunk.js.map": "/project-management-frontend/static/js/3.fa55267f.chunk.js.map",
+    "index.html": "/project-management-frontend/index.html",
+    "static/css/main.c01a97de.chunk.css.map": "/project-management-frontend/static/css/main.c01a97de.chunk.css.map",
+    "static/js/2.0807259c.chunk.js.LICENSE.txt": "/project-management-frontend/static/js/2.0807259c.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.391e4bb6.js",
+    "static/js/2.0807259c.chunk.js",
+    "static/css/main.c01a97de.chunk.css",
+    "static/js/main.f587b12d.chunk.js"
+  ]
+}
