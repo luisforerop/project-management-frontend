@@ -6,7 +6,8 @@ import { UserContext } from "../../stateManagement/UserContext";
 
 const Project = ({ view, infoProject, index}) => {
     const history = useHistory();
-    const { url } = useContext(UserContext)
+    const context = useContext(UserContext)
+    const { url } = context ? context : { undefined }
     const { /*id,*/ title, description, team, owner } = infoProject
     const [ infoTeam, , , fetchTeam ] = useFetch([])
     const [ ownerInfo, , , fetchOwner ] = useFetch({})
@@ -59,7 +60,8 @@ const Project = ({ view, infoProject, index}) => {
 
 const Projects = ({infoProjects}) => {
     // const { infoUser } = useContext(UserContext)
-    const { setCurrentProject } = useContext (UserContext)
+    const context = useContext (UserContext)
+    const { setCurrentProject } = context ? context : { undefined }
     // console.log(infoUser);
     const [projects, setProjects] = useState([])
     

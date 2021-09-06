@@ -12,7 +12,6 @@ function App() {
         <ViewTest/>
       </div>
       </UserProvider>
-      <ViewTest/>
     </>
       
   );

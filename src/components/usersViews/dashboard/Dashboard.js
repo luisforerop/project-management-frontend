@@ -6,11 +6,12 @@ import useFetch from "../../hooks/useFetch";
 import { useHistory } from "react-router";
 
 const Dashboard = props => {
-    const { infoUser, logout, companyId, url } = useContext(UserContext)
+    const context =  useContext(UserContext)
+    const { infoUser, logout, companyId, url } = context ? context : { undefined }
     const [ projectToRender, setProjectToRender ] = useState([]);
     const [ isFilter, setIsFilter ] = useState(false);
     const [ tryIt, setTryIt ] = useState(0)
-    const [ projectList, isCharging, errorPL, fetchProjectList ] = useFetch([])
+    const [ projectList, /*isCharging, errorPL,*/,, fetchProjectList ] = useFetch([])
     const history = useHistory();
 
     useEffect(()=>{

@@ -21,7 +21,8 @@ const fields = [
 
 const Login = props => {
     const history = useHistory();
-    const { setLoginInfo, url } = useContext(UserContext);
+    const context = useContext(UserContext);
+    const { setLoginInfo, url } = context ? context : { undefined } 
     const [ errorValidation, setErrorValidation ] = useState(false);
     const [ data, isFetching, error, setConfig ] = useFetch();
     
