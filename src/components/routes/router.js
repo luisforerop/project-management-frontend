@@ -9,7 +9,7 @@ const MyRoutes = () => {
   const Paths = Object.keys(views)
   console.log(views);
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       
       {/*<Navegation/>*/}
       {/* El siguiente código renderiza los componentes*/}

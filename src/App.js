@@ -1,15 +1,19 @@
 // import { NavLink } from "react-router-dom";
 import MyRoutes from "./components/routes/router";
 import { UserProvider } from "./components/stateManagement/UserContext";
+import ViewTest from "./components/usersViews/viewTest";
 
 function App() {
   return (
-    <UserProvider>
+    <>
+      <UserProvider>
       <div>
         <MyRoutes/>
-        
+        <ViewTest/>
       </div>
-    </UserProvider>
+      </UserProvider>
+      Todo fuera del app
+    </>
       
   );
 }
