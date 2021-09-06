@@ -12,7 +12,7 @@ function App() {
         <ViewTest/>
       </div>
       </UserProvider>
-      Todo fuera del app
+      <ViewTest/>
     </>
       
   );
